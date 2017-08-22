@@ -99,8 +99,8 @@ module Whois
     def self.parser_for(part)
       parser_klass(part.host).new(part)
     rescue LoadError
-      Parsers.const_defined?("Blank") || autoload("blank")
-      Parsers::Blank.new(part)
+      autoload("base_icann_compliant")
+      Parsers::BaseIcannCompliant.new(part)
     end
 
     # Detects the proper parser class according to given <tt>host</tt>
